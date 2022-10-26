@@ -8,7 +8,7 @@ import hello.core.member.MemoryMemberRepository;
 
 public class OrderServiceImpl implements OrderService{
 
-    //final이 있으면 객체 생성 필수, 없으면 객체 생성 안됨
+//    final이 있으면 객체 생성 필수, 없으면 객체 생성 안됨
 //    private final MemberRepository memberRepository = new MemoryMemberRepository();
 //    private DiscountPolicy discountPolicy;
 
@@ -26,5 +26,10 @@ public class OrderServiceImpl implements OrderService{
         int discountPrice = discountPolicy.discount(member, itemPrice);
 
         return new Order(memberId, itemName, itemPrice, discountPrice);
+    }
+
+    //테스트 용도
+    public MemberRepository getMemberRepository() {
+        return memberRepository;
     }
 }

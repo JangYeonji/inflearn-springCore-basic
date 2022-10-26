@@ -3,6 +3,7 @@ package hello.core;
 import hello.core.discount.DiscountPolicy;
 import hello.core.discount.FixDiscountPolicy;
 import hello.core.discount.RateDiscountPolicy;
+import hello.core.member.MemberRepository;
 import hello.core.member.MemberService;
 import hello.core.member.MemberServiceImpl;
 import hello.core.member.MemoryMemberRepository;
@@ -21,15 +22,19 @@ public class AppConfig {
     //빈 이름은 항상 다른 이름을 부여
     @Bean   //스프링 컨테이너에 등록. 빈 이름 {return new 빈 객체}
     public MemberService memberService(){
-        return new MemberServiceImpl(getMemberRepository());
+        System.out.println("call AppConfig.memberService");
+        return new MemberServiceImpl(memberRepository());
     }
+
     @Bean
-    public MemoryMemberRepository getMemberRepository() {
+    public MemberRepository memberRepository() {
+        System.out.println("call AppConfig.memberRepository");
         return new MemoryMemberRepository();
     }
     @Bean
     public OrderService orderService(){
-        return new OrderServiceImpl(getMemberRepository(), discountPolicy());
+        System.out.println("call AppConfig.orderService");
+        return new OrderServiceImpl(memberRepository(), discountPolicy());
     }
 
     //할인 정책은 이 부분만 변경해주면 됨
