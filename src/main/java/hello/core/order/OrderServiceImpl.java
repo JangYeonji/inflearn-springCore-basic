@@ -15,9 +15,24 @@ public class OrderServiceImpl implements OrderService{
 //    private final MemberRepository memberRepository = new MemoryMemberRepository();
 //    private DiscountPolicy discountPolicy;
 
+//    필드 주입. Appconfig의 orderService()의 return null 해야 함
+//    @Autowired
     private final MemberRepository memberRepository;
+//    @Autowired
     private final DiscountPolicy discountPolicy;
 
+    //setter로 의존관계 주입. 위에꺼 final 빼야 함
+//    @Autowired
+//    public void setMemberRepository(MemberRepository memberRepository) {
+//        this.memberRepository = memberRepository;
+//    }
+//    @Autowired
+//    public void setDiscountPolicy(DiscountPolicy discountPolicy) {
+//        this.discountPolicy = discountPolicy;
+//    }
+
+
+    //생성자로 의존관계 주입
     @Autowired
     public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
         this.memberRepository = memberRepository;
