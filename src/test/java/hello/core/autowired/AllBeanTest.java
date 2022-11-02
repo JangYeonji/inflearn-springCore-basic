@@ -24,7 +24,7 @@ public class AllBeanTest {
         assertThat(discountPrice).isEqualTo(1000);
 
         int rateDiscountPolicy = discountService.discount(member, 20000, "rateDiscountPolicy");
-        assertThat(rateDiscountPolicy).isEqualTo(2000)
+        assertThat(rateDiscountPolicy).isEqualTo(2000);
 
     }
 
